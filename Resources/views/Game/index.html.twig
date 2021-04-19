@@ -1,0 +1,43 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+{{ pageSetVar('title', 'Streams'|trans) }}
+
+<div class="title row">
+	<center><h1><i class="fab fa-twitch"></i> {% trans %}List of Games{% endtrans %} <i class="fab fa-twitch"></i></h1></center>
+</div>
+{# examples: https://codepen.io/Bahaa-Addin/pen/mmYMKp #}
+{# https://www.ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers #}
+<div id="cards_landscape_wrap-2">
+    <div class="container">
+        <div class="row">
+
+			{% set counter = 0 %}
+			{% for game in games %}
+
+				{% set counter = counter + 1 %}
+
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<a href="{{ path('kratorstreammodule_game_show', { 'id': game.id }) }}" title="{{ game.name }}">
+						<div class="card-flyer">
+							<div class="text-box">
+								<div class="image-box">
+									<img src="{{ game.boxArtUrl }}" alt="{{ game.name }}" />
+								</div>
+								<div class="text-container">
+									<h6>{{ game.name }}</h6>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% if counter is divisible by(4) %}
+					<div style="clear:both;"></div>
+				{% endif %}
+			{% else %}
+				<tr class='z-datatableempty'><td colspan='6' class='z-center'>{% trans %}No games found.{% endtrans %}</td></tr>
+			{% endfor %}
+
+		</div>
+    </div>
+</div>
+
+<div style="clear:both;"></div>

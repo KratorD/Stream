@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            $extension: '@Krator\StreamModule\KratorStreamModule'
+
+    Krator\StreamModule\:
+        resource: '../../*'
+        exclude: '../../{bootstrap.php,Tests,vendor}'
+    
+    Krator\StreamModule\Helper\:
+        resource: '../../Helper/*'
+        lazy: true
+    
+    krator_stream_module.app_settings:
+        class: Krator\StreamModule\AppSettings
+        arguments:
+            - "@zikula_extensions_module.api.variable"

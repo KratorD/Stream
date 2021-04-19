@@ -1,0 +1,22 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+
+<div class="title">
+	<h1>{% trans %}Stream{% endtrans %}</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+		<div id="streaming"></div>
+		<script type="text/javascript">
+		  var options = {
+			width: {{ getModVar('KratorStreamModule', 'streamWidth') }},
+			height: {{ getModVar('KratorStreamModule', 'streamHeight') }},
+			channel: "{{ stream_id }}",
+			layout: "video-with-chat"
+		  };
+		  var player = new Twitch.Player("streaming", options);
+		  player.setVolume(0.5);
+		</script>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+
+<h3><i class="fa fa-pencil-square-o"></i>{% trans %}Edit Game{% endtrans %}</h3>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('kratorstreammodule_streamentity_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>

@@ -1,0 +1,38 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+
+<h3><i class="fa fa-eye"></i>{{ streamEntity.name }}</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ streamEntity.id }}</td>
+            </tr>
+            <tr>
+                <th>Gameid</th>
+                <td>{{ streamEntity.gameId }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ streamEntity.name }}</td>
+            </tr>
+            <tr>
+                <th>Boxarturl</th>
+                <td>{{ streamEntity.boxArtUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('kratorstreammodule_streamentity_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+        </li>
+        <li>
+            <a href="{{ path('kratorstreammodule_streamentity_edit', { 'id': streamEntity.id }) }}">{% trans %}Edit{% endtrans %}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>

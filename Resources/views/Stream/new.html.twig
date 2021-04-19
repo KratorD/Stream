@@ -1,0 +1,50 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+
+<h3><i class="fa fa-list-alt"></i>{% trans %}Select game/s to add{% endtrans %}</h3>
+
+<form action="{{ path('kratorstreammodule_streamentity_create') }}" method="post" id="streamNewForm" class="form-horizontal" role="form">
+	<div>
+		<div class="table-responsive">
+			<table id="tableToSort" class="table table-striped table-bordered table-hover table-condensed">
+				<colgroup>
+					<col id="cSelect">
+					<col id="cGameId">
+					<col id="cName">
+					<col id="cBoxArtUrl">
+				</colgroup>
+				<thead>
+				<tr>
+					<th id="hSelect" scope="col">&nbsp;</th>
+					<th id="hGameId" scope="col">{% trans %}Game Id Twitch{% endtrans %}</th>
+					<th id="hName" scope="col">{% trans %}Name{% endtrans %}</th>
+					<th id="hBoxArtUrl" scope="col">{% trans %}Box Art URL{% endtrans %}</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for item in founds %}
+					<tr id="{{ item.id }}">
+						<td headers="hSelect" class="text-center z-w02">
+							<input type="checkbox" name="items[{{ loop.index }}]['mycheck']" value="1" class="kratorstream-toggle-checkbox">
+						</td>
+						<td headers="hGameId"><input type="text" name="items[{{ loop.index }}]['gameid']" value="{{ item.id }}"></td>
+						<td headers="hName"><input type="text" name="items[{{ loop.index }}]['name']" value="{{ item.name }}"></td>
+						<td headers="hBoxArtUrl"><input type="text" name="items[{{ loop.index }}]['boxarturl']" value="{{ item.box_art_url }}"></td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<fieldset>
+			<label for="actions" class="col-sm-3 control-label">{% trans %}With selected competiciones{% endtrans %}</label>
+			<div class="col-sm-6">
+				<select id="actions" name="action" class="form-control input-sm">
+					<option value="">{% trans %}Choose action') }}</option>
+					<option value="add" title="{% trans %}Add Games to the list{% endtrans %}">{% trans %}Add{% endtrans %}</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<input type="submit" value="Submit" class="btn btn-default btn-sm">
+			</div>
+		</fieldset>
+	</div>
+</form>

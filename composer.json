@@ -1,0 +1,42 @@
+{
+    "name": "krator/stream-module",
+    "version": "1.1.0",
+    "description": "Get Streams from Twitch",
+    "type": "zikula-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krator",
+            "email": "krator@heroesofmightandmagic.es",
+            "homepage": "https://github.com/KratorD/",
+            "role": "owner"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": { "Krator\\StreamModule\\": "" }
+    },
+    "require": {
+        "php": ">=7.2.5"
+    },
+    "extra": {
+        "zikula" : {
+            "core-compatibility": ">=3.0.0",
+            "class": "Krator\\StreamModule\\KratorStreamModule",
+            "displayname": "StreamModule",
+            "icon": "fab fa-twitch",
+            "url": "streams",
+            "securityschema": {
+                "KratorStreamModule::": "::"
+            },
+			"capabilities": {
+                "admin": {
+                    "route": "kratorstreammodule_config_settings"
+                },
+                "user": {
+                    "route": "kratorstreammodule_game_index"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{{ pageAddAsset('stylesheet', zasset('@KratorStreamModule:css/custom.css'), 120) }}
+
+<h3><i class="fa fa-list-alt"></i>{% trans %}Games list{% endtrans %}</h3>
+<p>
+	<a href="{{ path('kratorstreammodule_streamentity_new') }}" title="{% trans %}Create Game{% endtrans %}"><i class="fa fa-plus"></i>{% trans %}Create New Game{% endtrans %}</a>
+</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}GameId{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Boxarturl{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for streamEntity in streamEntities %}
+            <tr>
+                <td><a href="{{ path('kratorstreammodule_streamentity_show', { 'id': streamEntity.id }) }}">{{ streamEntity.id }}</a></td>
+                <td>{{ streamEntity.gameId }}</td>
+                <td>{{ streamEntity.name }}</td>
+                <td>{{ streamEntity.boxArtUrl }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('kratorstreammodule_streamentity_show', { 'id': streamEntity.id }) }}">{% trans %}Show{% endtrans %}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('kratorstreammodule_streamentity_edit', { 'id': streamEntity.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                        </li>
+						<li>
+                            <a href="{{ path('kratorstreammodule_streamentity_delete', { 'id': streamEntity.id }) }}">{% trans %}Delete{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
